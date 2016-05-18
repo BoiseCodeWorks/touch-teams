@@ -1,5 +1,6 @@
 (function(){
     angular.module('teams', [
-        'ui.router'
+        'ui.router',
+        'js-data'
     ])
 }())

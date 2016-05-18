@@ -1,1 +1,35 @@
-<h1>{{$ctrl.sport}}</h1>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Add League to {{$ctrl.sport.name}}</h3>
+            <p><small>{{$ctrl.sport.description}}</small></p>
+        </div>
+        <div class="panel-body">
+            <form ng-submit="$ctrl.addLeague($ctrl.newLeague)" class="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="$ctrl.newLeague.name" placeholder="League Name"> 
+                </div>
+                <div class="form-group">
+                    <textarea type="text" class="form-control" ng-model="$ctrl.newLeague.description" placeholder="Description...." rows="4"></textarea> 
+                </div>    
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit">Add League</button>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                </div>
+            </form>     
+        </div>
+    </div>
+    
+    <div class="panel">
+        <div class="panel-body">
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="league in $ctrl.leagues">
+                    <a ui-sref="league({sport: $ctrl.sport.name, league: league.name})">
+                        <h3>{{league.name}}</h3>
+                    </a>
+                    <p>{{league.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

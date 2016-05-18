@@ -6,9 +6,20 @@
             controller: SportsController
         })
         
-        function SportsController(){
+        function SportsController(Models){
             var $ctrl = this;
-            $ctrl.test = 'Hello testing'
+            
+            Models.Sport.findAll().then(function(sports){
+                $ctrl.sports = sports
+            })
+            
+            
+            $ctrl.addSport = function(sport){
+                Models.Sport.create(sport)
+                $ctrl.newSport = {}
+            }
+            
+            
         }
     
 }())

@@ -6,12 +6,25 @@
             controller: SportController
         })
         
-        function SportController($state){
+        function SportController($state, Models){
             var $ctrl = this;
-            $ctrl.test = 'Hello testing'
-            console.log($state.params)
             
-            $ctrl.sport = $state.params.sport;
+            Models.Sport.findAll({where: {name: $state.params.sport}}).then(function(sport){
+                $ctrl.sport = sport[0];
+                Models.League.findAll({where: {sport: $ctrl.sport.id}}).then(function (leagues) {
+                    $ctrl.leagues = leagues;
+                })
+            })
+            
+            $ctrl.addLeague = function(league){
+                league.sport = $ctrl.sport.id;
+                Models.League.create(league);
+                $ctrl.newLeague = {}
+            }
+            
+            
+            
+            
             
         }
     

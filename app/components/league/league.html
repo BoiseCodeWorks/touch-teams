@@ -1,1 +1,36 @@
-<h1>{{$ctrl.sport}} - {{$ctrl.league}}</h1>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Add Team to {{$ctrl.league}}</h3>
+        </div>
+        <div class="panel-body">
+            <form ng-submit="$ctrl.addTeam($ctrl.newteam)" class="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="$ctrl.newTeam.name" placeholder="team Name"> 
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="$ctrl.newTeam.city" placeholder="Description...."> 
+                </div>    
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit">Add Team</button>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                </div>
+            </form>     
+        </div>
+    </div>
+    
+    <div class="panel">
+        <div class="panel-body">
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="team in $ctrl.teams">
+                    <a ui-sref="team({team: team.name})">
+                        <h3>{{team.name}}</h3>
+                    </a>
+                    <p>{{team.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
