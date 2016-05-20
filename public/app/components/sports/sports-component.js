@@ -13,13 +13,10 @@
                 $ctrl.sports = sports
             })
             
-            
             $ctrl.addSport = function(sport){
                 Models.Sport.create(sport)
                 $ctrl.newSport = {}
             }
-            
-            
         }
     
 }())

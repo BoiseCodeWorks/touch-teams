@@ -23,7 +23,7 @@
     <div class="panel">
         <div class="panel-body">
             <div class="list-group">
-                <div class="list-group-item" ng-repeat="league in $ctrl.leagues">
+                <div class="list-group-item" ng-repeat="league in $ctrl.sport.leagues">
                     <a ui-sref="league({sport: $ctrl.sport.name, league: league.name})">
                         <h3>{{league.name}}</h3>
                     </a>

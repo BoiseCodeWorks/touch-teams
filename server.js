@@ -3,11 +3,11 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var api = require('./api');
+var api = require('./server-assets/api/api');
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use('/api', api.router);
+app.use('/', api.router);
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
